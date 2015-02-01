@@ -10,10 +10,10 @@ RUN	cd /opt && \
 
 # configure and cleanup apt
 RUN	sh -c 'echo "deb http://cdn.debian.net/debian wheezy main" \
-		> /etc/apt/sources.list' && \
+		> /opt/rootfs/etc/apt/sources.list' && \
 	sh -c 'echo "deb http://cdn.debian.net/debian wheezy-updates main" \
-		>> /etc/apt/sources.list' && \
+		>> /opt/rootfs/etc/apt/sources.list' && \
 	sh -c 'echo "deb http://security.debian.org wheezy/updates main" \
-		>> /etc/apt/sources.list' && \
+		>> /opt/rootfs/etc/apt/sources.list' && \
 	proot -r /opt/rootfs -q qemu-arm-static apt-get clean
 

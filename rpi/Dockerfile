@@ -13,3 +13,7 @@ RUN	cd /opt && \
 RUN	sh -c 'echo "deb http://mirrordirector.raspbian.org/raspbian/ wheezy main rpi" \
 		> /opt/rootfs/etc/apt/sources.list' && \
 	proot -r /opt/rootfs -q qemu-arm-static apt-get clean
+
+# fix resolv.conf
+RUN	sh -c 'echo "nameserver 8.8.8.8" > /opt/rootfs/etc/resolv.conf' && \
+	sh -c 'echo "nameserver 8.8.4.4" >>/opt/rootfs/etc/resolv.conf'
